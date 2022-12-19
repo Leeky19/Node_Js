@@ -51,7 +51,7 @@ const string1 = "Une chaîne de caractères";
  */
 
 function NoVowel(str){
-    return str.replace(/[aeiouéèàùïëîê]/ig, ''); 
+    return str.replace(/[aeiouyéèàùïëîê]/ig, ''); 
     /**
      *  paramettre 1 = ce qui va être remplacé par p2, ici tous les caractères dans cette chaine de caractere 
      * ig indique qu'on annalise toute la chaine str
@@ -132,12 +132,25 @@ console.log(BigVowel(string1));
 //- 9 Écrivez une fonction qui prend une chaîne de caractères 
 //et renvoie le nombre de voyelles dans cette chaîne.
 
-function countVowel(str) { 
-    const count = str.match(/[aeiouéèàùïëîê]/gi).length;
-    return count;
+//tableau de chaine de caractere des voyelles en miniscule
+const vowels = ["a", "e", "i", "o", "u", "é", "è", "à", "ù", "ï", "ë", "î", "ê"]
+
+/**
+ * 
+ * @param {*} str une chaine de caractere
+ * @returns le nombre de voyelles dans la string
+ */
+function countVowel2(str) {
+    let count = 0; // initialisation du compteur
+    for (let letter of str.toLowerCase()) { // les lettres de str sont passer une à une en minuscule et devienne des "variables"
+        if (vowels.includes(letter)) { // test pour savoir si la lettre de str est aussi dans voyelle
+            count++; //count = count + 1
+        }
+    }
+    return count
 }
 //afficher un exemple
-console.log(countVowel(string1));
+console.log(countVowel2(string1));
 
 //- 10 Écrivez une fonction qui prend une chaîne de caractères 
 //et renvoie une nouvelle chaîne avec toutes les consonnes en majuscules.
@@ -145,7 +158,7 @@ console.log(countVowel(string1));
 /*
 function BigNoVowel(str){
     for(let i = 0; i<str.length; i++){
-        if(str[i]==/[aeiouéèàùïëîê]/){
+        if(str[i]==/[aeiouyéèàùïëîê]/){
            str[i] = str[i].toUpperCase();
         }
     }
