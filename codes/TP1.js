@@ -43,33 +43,61 @@ console.log(Big(OtherArray));
 
 //definition d'une chaîne de crarctere
 const string1 = "Une chaîne de caractères";
-/*
-function NoVowelString(stringpara){
-    for(let i = 0; i<stringpara.length; i++) {
 
-        if (stringpara[i] = 'a' || 'e' || 'i' || 'o' || 'u' ||'A' || 'E' || 'I' || 'O' || 'U');{
-            stringpara[i] = stringpara.
-        }
+/**
+ * 
+ * @param {*} str une chaine de caractères 
+ * @returns une chaine de caractères sans voyelle
+ */
 
-    }
+function NoVowel(str){
+    return str.replace(/[aeiouéèàùïëîê]/ig, ''); 
+    /**
+     *  paramettre 1 = ce qui va être remplacé par p2, ici tous les caractères dans cette chaine de caractere 
+     * ig indique qu'on annalise toute la chaine str
+     * parametre 2 = caractere qui remplace p1
+    */
 }
-*/
+
+//affichage d'un exemple
+console.log(NoVowel(string1));
 
 //- 4 Écrivez une fonction qui prend un tableau de chaînes de caractères 
 //et renvoie un tableau de chaînes de caractères triées par ordre alphabétique.
+
+const AlphaArray = ["Chien", "abricot", "électron","résistance", "Tomate"]; 
+/**
+ * 
+ * @param {*} str un tableau de chaine de caractere
+ * @returns un tableau de chaine de caractere tri par ordre aplhabétique (Majuscule avant miniscule), prise en compte du code ascii
+ */
+function AlphaAscii(str){
+    return str.sort();      // tri par ordre alphabéique avec le code ascii
+}
+console.log(AlphaAscii(AlphaArray));
+
+
 
 //- 5 Écrivez une fonction qui prend un nombre en argument 
 //et renvoie une chaîne de caractères représentant ce nombre en mots. 
 //Par exemple, si l'entrée est 42, la fonction doit retourner "quarante-deux".
 
+
+
+
+
+
+
 //- 6 Écrivez une fonction qui prend un tableau d'objets 
 //et un nom de propriété et renvoie un tableau des valeurs 
 //de cette propriété dans chaque objet.
 
+
+
 //- 7 Écrivez une fonction qui prend un tableau de nombres 
 //et renvoie un tableau de nombres triés par ordre décroissant.
 
-
+/*
 const newArray = [3, 6, 1, 9, -2];
 
 function ArrayDecreasing(newArray)
@@ -78,12 +106,49 @@ tab.sort(sortDecresind);
 
 
 console.log(tab);
-
+*/
 //- 8 Écrivez une fonction qui prend une chaîne de caractères et 
 //renvoie une nouvelle chaîne avec toutes les voyelles en majuscules.
+
+/**
+ * 
+ * @param {*} str une chaine de caractere contenant une voyelle minimum
+ * @returns une chaine de caractere avec voyelle en majuscule
+ */
+function BigVowel(str){
+    const a = str.replace(/[aà]/ig, 'A'); //remplacement des a miniscule en majuscule modifie la chaine de caractere entree en parametre
+    const e = a.replace(/[eéèêë]/ig, 'E'); // remplace les e miniscule en majuscule modifie la chaine où les à sont en majuscule etc...
+    const i = e.replace(/[iïî]/ig, 'I');
+    const o = i.replace(/[oôö]/ig, 'O');
+    const u = o.replace(/[uüû]/ig, 'U');
+    const y = u.replace(/[y]/ig, 'Y');
+    return y;
+}
+
+//affiche un exemple
+console.log(BigVowel(string1));
+
 
 //- 9 Écrivez une fonction qui prend une chaîne de caractères 
 //et renvoie le nombre de voyelles dans cette chaîne.
 
+function countVowel(str) { 
+    const count = str.match(/[aeiouéèàùïëîê]/gi).length;
+    return count;
+}
+//afficher un exemple
+console.log(countVowel(string1));
+
 //- 10 Écrivez une fonction qui prend une chaîne de caractères 
 //et renvoie une nouvelle chaîne avec toutes les consonnes en majuscules.
+
+/*
+function BigNoVowel(str){
+    for(let i = 0; i<str.length; i++){
+        if(str[i]==/[aeiouéèàùïëîê]/){
+           str[i] = str[i].toUpperCase();
+        }
+    }
+    return str
+}
+*/
