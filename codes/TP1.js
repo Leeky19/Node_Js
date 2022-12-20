@@ -38,8 +38,8 @@ function Big (myArray){
 //affichage de la fonction
 console.log(Big(OtherArray));
 
-//- 3 Écrivez une fonction qui prend une chaîne de caractères et 
-//renvoie une nouvelle chaîne de caractères dont toutes les voyelles ont été supprimées.
+/*- 3 Écrivez une fonction qui prend une chaîne de caractères et 
+    renvoie une nouvelle chaîne de caractères dont toutes les voyelles ont été supprimées.*/
 
 //definition d'une chaîne de crarctere
 const string1 = "Une chaîne de caractères";
@@ -65,12 +65,13 @@ console.log(NoVowel(string1));
 //- 4 Écrivez une fonction qui prend un tableau de chaînes de caractères 
 //et renvoie un tableau de chaînes de caractères triées par ordre alphabétique.
 
-const AlphaArray = ["Chien", "abricot", "électron","résistance", "Tomate"]; 
+const AlphaArray = ["Chien", "abricot", "électron","résistance", "Tomate"]; //exemple de tableau à trier
 /**
  * 
  * @param {*} str un tableau de chaine de caractere
  * @returns un tableau de chaine de caractere tri par ordre aplhabétique (Majuscule avant miniscule), prise en compte du code ascii
  */
+
 function AlphaAscii(str){
     return str.sort();      // tri par ordre alphabéique avec le code ascii
 }
@@ -78,37 +79,40 @@ console.log(AlphaAscii(AlphaArray));
 
 
 
-//- 5 Écrivez une fonction qui prend un nombre en argument 
-//et renvoie une chaîne de caractères représentant ce nombre en mots. 
-//Par exemple, si l'entrée est 42, la fonction doit retourner "quarante-deux".
+/*- 5 Écrivez une fonction qui prend un nombre en argument 
+    et renvoie une chaîne de caractères représentant ce nombre en mots. 
+    Par exemple, si l'entrée est 42, la fonction doit retourner "quarante-deux".*/
 
 
 
+/*- 6 Écrivez une fonction qui prend un tableau d'objets 
+    et un nom de propriété et renvoie un tableau des valeurs 
+    de cette propriété dans chaque objet.*/
+
+    
 
 
+/*- 7 Écrivez une fonction qui prend un tableau de nombres 
+    et renvoie un tableau de nombres triés par ordre décroissant.*/
 
-
-//- 6 Écrivez une fonction qui prend un tableau d'objets 
-//et un nom de propriété et renvoie un tableau des valeurs 
-//de cette propriété dans chaque objet.
-
-
-
-//- 7 Écrivez une fonction qui prend un tableau de nombres 
-//et renvoie un tableau de nombres triés par ordre décroissant.
-
-/*
+//tableau test
 const newArray = [3, 6, 1, 9, -2];
+/**
+ * 
+ * @param {*} anArray un tableau de nombre
+ * @returns renvoie un tableau de nombre trier par ordre décroissant
+ */
+function ArrayDecreasing(anArray){
+    const Decreasing = anArray.sort((a,b)=>b-a); 
+    return Decreasing;
+}
+/* a prend la valleur de b et inversement, si la difference entre a et b est supperieur à 0 
+    b est placé devant a dans le tableau*/
 
-function ArrayDecreasing(newArray)
-const sortDecreasing = (a, b) => b - a;
-tab.sort(sortDecresind);
+console.log(ArrayDecreasing(newArray));
 
-
-console.log(tab);
-*/
-//- 8 Écrivez une fonction qui prend une chaîne de caractères et 
-//renvoie une nouvelle chaîne avec toutes les voyelles en majuscules.
+/*- 8 Écrivez une fonction qui prend une chaîne de caractères et 
+    renvoie une nouvelle chaîne avec toutes les voyelles en majuscules.*/
 
 /**
  * 
@@ -129,11 +133,11 @@ function BigVowel(str){
 console.log(BigVowel(string1));
 
 
-//- 9 Écrivez une fonction qui prend une chaîne de caractères 
-//et renvoie le nombre de voyelles dans cette chaîne.
+/*- 9 Écrivez une fonction qui prend une chaîne de caractères 
+    et renvoie le nombre de voyelles dans cette chaîne.*/
 
 //tableau de chaine de caractere des voyelles en miniscule
-const vowels = ["a", "e", "i", "o", "u", "é", "è", "à", "ù", "ï", "ë", "î", "ê"]
+const myVowels = ["a", "e", "i", "o", "u", "é", "è", "à", "ù", "ï", "ë", "î", "ê"]
 
 /**
  * 
@@ -143,7 +147,7 @@ const vowels = ["a", "e", "i", "o", "u", "é", "è", "à", "ù", "ï", "ë", "î
 function countVowel2(str) {
     let count = 0; // initialisation du compteur
     for (let letter of str.toLowerCase()) { // les lettres de str sont passer une à une en minuscule et devienne des "variables"
-        if (vowels.includes(letter)) { // test pour savoir si la lettre de str est aussi dans voyelle
+        if (myVowels.includes(letter)) { // test pour savoir si la lettre de str est aussi dans voyelle
             count++; //count = count + 1
         }
     }
@@ -152,16 +156,20 @@ function countVowel2(str) {
 //afficher un exemple
 console.log(countVowel2(string1));
 
-//- 10 Écrivez une fonction qui prend une chaîne de caractères 
-//et renvoie une nouvelle chaîne avec toutes les consonnes en majuscules.
+/*- 10 Écrivez une fonction qui prend une chaîne de caractères 
+    et renvoie une nouvelle chaîne avec toutes les consonnes en majuscules.*/
 
-/*
-function BigNoVowel(str){
-    for(let i = 0; i<str.length; i++){
-        if(str[i]==/[aeiouyéèàùïëîê]/){
-           str[i] = str[i].toUpperCase();
-        }
-    }
-    return str
+
+function SmallVowel (str){
+    const newVowel = str.replace(/[aeiouyéèàùïëîê]/ig, (vowel) => vowel.toLowerCase());
+    return newVowel; 
 }
-*/
+
+function BigConso(str){
+    const allup = str.toUpperCase();
+    const ButOnlyConso = SmallVowel(allup);
+    return ButOnlyConso;
+}
+
+//exemple
+console.log(BigConso(string1));
