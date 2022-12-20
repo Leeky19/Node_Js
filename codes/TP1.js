@@ -82,15 +82,39 @@ console.log(AlphaAscii(AlphaArray));
 /*- 5 Écrivez une fonction qui prend un nombre en argument 
     et renvoie une chaîne de caractères représentant ce nombre en mots. 
     Par exemple, si l'entrée est 42, la fonction doit retourner "quarante-deux".*/
+/*correction
+function DigitToLetters(number){
+    const ones = ['', 'one', 'tow', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'heighteen', 'nineteen']
 
-
+    if (number < 10){
+        return ones[num];
+    } else if (num - 20){
+        return teens[num - 10];
+    } else {
+        return tens[Math.floor(num / 10)] + '-' + ones [num % 10];
+    }
+}
+console.log(numberToWords(43)) */
 
 /*- 6 Écrivez une fonction qui prend un tableau d'objets 
     et un nom de propriété et renvoie un tableau des valeurs 
     de cette propriété dans chaque objet.*/
+/*correction
+ const ObjectArray = [
+    {firstname :"John", lastname : "Doe" },
+    {firstname :"John", lastname : "Doe" },
+    {firstname :"John", lastname : "Doe" },
+    {firstname :"John", lastname : "Doe" },
+    {firstname :"John", lastname : "Doe" },
+]
 
+function getPropertyValues ( objArray , propName){
+    return objArray.map(obj => obj[propName]);
+}
 
-
+console.log(getPropertyValues(ObjectArray,'lastname'));*/
 
 /*- 7 Écrivez une fonction qui prend un tableau de nombres 
     et renvoie un tableau de nombres triés par ordre décroissant.*/
@@ -128,7 +152,12 @@ function BigVowel(str){
     const y = u.replace(/[y]/ig, 'Y');
     return y;
 }
+/*
+function capitalizeVowel(str){
+    return str.replace(/[aoieuy]/gi, vowel=> vowel.toUpperCase())
+}
 
+*/
 //affiche un exemple
 console.log(BigVowel(string1));
 
