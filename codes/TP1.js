@@ -89,7 +89,7 @@ console.log(AlphaAscii(AlphaArray));
     et un nom de propriété et renvoie un tableau des valeurs 
     de cette propriété dans chaque objet.*/
 
-    
+
 
 
 /*- 7 Écrivez une fonction qui prend un tableau de nombres 
@@ -106,7 +106,7 @@ function ArrayDecreasing(anArray){
     const Decreasing = anArray.sort((a,b)=>b-a); 
     return Decreasing;
 }
-/* a prend la valleur de b et inversement, si la difference entre a et b est supperieur à 0 
+/*  a prend la valleur de b et inversement, si la difference entre a et b est supperieur à 0 
     b est placé devant a dans le tableau*/
 
 console.log(ArrayDecreasing(newArray));
@@ -156,20 +156,35 @@ function countVowel2(str) {
 //afficher un exemple
 console.log(countVowel2(string1));
 
+
 /*- 10 Écrivez une fonction qui prend une chaîne de caractères 
     et renvoie une nouvelle chaîne avec toutes les consonnes en majuscules.*/
 
+//une liste de teste 
+const string2 = "Une chAîne de caractèrEs";
 
+/**
+ * 
+ * @param {*} str une chaine de caractere 
+ * @returns une chaine de caractere où les voyelles sont en minuscule
+ */
 function SmallVowel (str){
-    const newVowel = str.replace(/[aeiouyéèàùïëîê]/ig, (vowel) => vowel.toLowerCase());
+    const newVowel = str.replace(/[aeiouyéèàùïëîê]/ig, (vowel) => vowel.toLowerCase()); 
     return newVowel; 
 }
+//si les lettres de la chaine de caractere sont dans la liste de voyelle, on les passe de majuscule en minuscule
 
+
+/**
+ * 
+ * @param {*} str une chaine de caratere
+ * @returns une chaine de caractere avec les consonnes en Maj 
+ */
 function BigConso(str){
-    const allup = str.toUpperCase();
-    const ButOnlyConso = SmallVowel(allup);
+    const allup = str.toUpperCase(); //on passe toute la liste en Majuscule
+    const ButOnlyConso = SmallVowel(allup); //appel de la fonction précedente
     return ButOnlyConso;
 }
 
 //exemple
-console.log(BigConso(string1));
+console.log(BigConso(string2));
