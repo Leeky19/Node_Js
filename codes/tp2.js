@@ -32,7 +32,7 @@ fs.writeFile('test.txt', 'utf-ergergerg est là', (err, data) => {
 })
 */
 
-/* une programme qui ecrit directement ce qu'il y a dans le fichier mais affiche un undifined 
+/* un programme qui ecrit directement ce qu'il y a dans le fichier mais affiche un undifined 
 fs.writeFile('test.txt', 'test de test de test', (err, data) => { //mettre le nom d'un fichier existant, modifie en écrasant les données présents
     if(err) {
         console.log(err);
@@ -150,7 +150,16 @@ exe.exec('ls -lh', (error, stdout, stderr) => { //ls -lh liste tous les fichiers
 
 //8- Écrivez un programme Node.js qui utilise le module path pour manipuler les chemins de fichiers.
 
+/*correction
+const path = require('path');
 
+const joinPathExample = path.join('/test/path', 'end/of/path');
+
+console.log('output: ', joinPathExample);
+
+const fileExtension = path.extname('test.txt');
+console.log('output: ', fileExtension);
+*/
 
 //9- Écrivez un programme Node.js qui utilise le module querystring pour analyser une chaîne de requête URL.
 
@@ -165,3 +174,5 @@ console.log("Output: ", output);
 
 
 //10- Écrivez un programme Node.js qui utilise le module events pour créer un émetteur d'événements personnalisé.
+
+
