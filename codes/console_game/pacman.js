@@ -182,7 +182,7 @@ let ghost = blessed.text({
   
     left: 1,  //position en absice 
   
-    content: 'G', //caractere qui represente Pac-man
+    content: 'G', //caractere qui represente Fantome
   
     style: {
   
@@ -191,12 +191,42 @@ let ghost = blessed.text({
     }
   
   });
-
+// affiche le fantome
   screen.append(ghost);
 
 
+/**
+ * le but de cette fonction est que le fantome se rapproche du joueur
+ * @param {*} ghostPos position du fantome
+ * @param {*} pacmanPos position de pacman 
+ * @returns de nouveaux coordonnees en absice et ordonée pour le fantome
+ */
+function moveGhost(ghostPos, pacmanPos) {
 
+  let newTop = ghostPos.top;
+  let newLeft = ghostPos.left;
 
+  // Déterminer la direction la plus proche de Pac-Man
+
+  if (ghostPos.top > pacmanPos.top) newTop--;
+
+  else if (ghostPos.top < pacmanPos.top) newTop++;
+
+  if (ghostPos.left > pacmanPos.left) newLeft--;
+
+  else if (ghostPos.left < pacmanPos.left) newLeft++;
+
+  return {
+
+    top: newTop,
+
+    left: newLeft
+
+  };
+
+}
+
+ 
 
 
 
