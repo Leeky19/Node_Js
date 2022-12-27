@@ -279,6 +279,21 @@ function checkGameOver() {
   setInterval(checkGameOver, 500);
 
 
+/* fonction pour le score mais ne fonctionne pas 
+let score = 0;
+
+function updateScore(){
+    score++;
+    score.setContent(`Score : ${score}`);
+    screen.render;
+}
+
+if (map[newTop][newLeft] === '.'){
+    updateScore();
+    map[newTop][newLeft] = ''
+}
+
+*/
 
  
 //Mise à jour de l'affichage de la fenetre de terminal
