@@ -243,12 +243,47 @@ ghost.left = newPos.left;
 
 screen.render();
 
-}, 500); //temps de refresh 
+}, 500); //temps de refresh
+
+
+function checkGameOver() {
+
+    if (pacman.top === ghost.top && pacman.left === ghost.left) { //condition de game over : le fantome à les meme coordonnée que Pac-man 
+  
+      // Afficher un message de fin de jeu
+  
+      let gameOverText = blessed.text({         //creation  de l'objet textuel Game Over
+  
+        top: Math.floor(map.length / 2),        //moitie des lignes
+  
+        left: Math.floor(map[0].length / 2 - 5) ,   //moitier des collone -5 pour centrer le texte
+  
+        content: 'Game Over!',                  //texte à afficher
+  
+        style: {
+  
+          fg: 'red',
+  
+          bold: true //gras du texte
+  
+        }
+  
+      });
+  
+      screen.append(gameOverText);
+      screen.render();
+  
+    }
+  
+  }
+  
+  // Vérifier si il n'y a pas de game over toutes les 500 ms
+  setInterval(checkGameOver, 500);
 
 
 
  
-//mettre à jour l'affcihage de la fenetre de terminal
+//Mise à jour de l'affichage de la fenetre de terminal
 screen.render();
 
  
