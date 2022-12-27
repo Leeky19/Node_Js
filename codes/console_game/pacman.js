@@ -225,25 +225,28 @@ function moveGhost(ghostPos, pacmanPos) {
  
 
 /**
- * Mettre à jour la position du fantôme toutes les 500 millisecondes
+ * Mettre à jour la position du fantôme et verification si il y a un game over toutes les 500 millisecondes
  */ 
 setInterval(() => {
 
-  let newPos = moveGhost({ top: ghost.top, left: ghost.left }, { top: pacman.top, left: pacman.left });
-
-  // Vérifier que le fantôme ne sort pas de la carte et ne se déplace pas à travers les murs
-  if (newPos.top < 0 || newPos.top >= map.length || newPos.left < 0 || newPos.left >= map[0].length || map[newPos.top][newPos.left] === '#') {
+    // Mettre à jour la position du fantôme
+    let newPos = moveGhost({ top: ghost.top, left: ghost.left }, { top: pacman.top, left: pacman.left });
+    
+    // Vérifier que le fantôme ne sort pas de la carte et ne se déplace pas à travers les murs
+    if (newPos.top < 0 || newPos.top >= map.length || newPos.left < 0 || newPos.left >= map[0].length || map[newPos.top][newPos.left] === '#') {
     
     return; //sort de la fonction si remplis une des condition du if
-
   }
 
-ghost.top = newPos.top;
-ghost.left = newPos.left;
+    ghost.top = newPos.top;
+    ghost.left = newPos.left;
+    screen.render();
 
-screen.render();
+    // Vérifier la fin de jeu
+    checkGameOver();
+  }, 500);
 
-}, 500); //temps de refresh
+//}, 500); //temps de refresh
 
 
 function checkGameOver() {
@@ -252,27 +255,22 @@ function checkGameOver() {
   
       // Afficher un message de fin de jeu
   
-      let gameOverText = blessed.text({         //creation  de l'objet textuel Game Over
-  
-        top: Math.floor(map.length / 2),        //moitie des lignes
-  
+      let gameOverText = blessed.text({             //creation  de l'objet textuel Game Over
+        top: Math.floor(map.length / 2),            //moitie des lignes
         left: Math.floor(map[0].length / 2 - 5) ,   //moitier des collone -5 pour centrer le texte
-  
-        content: 'Game Over!',                  //texte à afficher
-  
+        content: 'Game Over!',                       //texte à afficher
         style: {
-  
+
           fg: 'red',
-  
           bold: true //gras du texte
-  
+        
         }
-  
-      });
-  
+     });
+
       screen.append(gameOverText);
       screen.render();
-  
+      process.exit(0); //fin du jeu
+
     }
   
   }
