@@ -151,17 +151,15 @@ screen.key(['up', 'down', 'left', 'right'], (ch, key) => {
 
   if (key.name === 'right') newLeft++;
 
- 
 
   // Vérifier si Pac-Man ne sort pas de la carte et ne se déplace pas à travers les murs
 
   if (newTop < 0 || newTop >= map.length || newLeft < 0 || newLeft >= map[0].length || map[newTop][newLeft] === '#') {
 
-    return;
+    return; //termine l'execution de la fonction, si aucune des verification n'échoue on peut effectuer les actions suivantes
+            //si le programme passe dans le if on sort de la fonction et donc on ne va pas se deplacer
 
   }
-
- 
 
   // Mettre à jour la position de Pac-Man, Pac-man prend la veleur de ces nouveaux coordonnées
 
@@ -169,8 +167,6 @@ screen.key(['up', 'down', 'left', 'right'], (ch, key) => {
 
   pacman.left = newLeft;
 
-
-  
   screen.render();
 
 });
@@ -196,10 +192,10 @@ let ghost = blessed.text({
 
 
 /**
- * le but de cette fonction est que le fantome se rapproche du joueur
+ * le but de cette fonction est que le fantome se rapproche du joueur (elle prend en paramettre deux objets)
  * @param {*} ghostPos position du fantome
  * @param {*} pacmanPos position de pacman 
- * @returns de nouveaux coordonnees en absice et ordonée pour le fantome
+ * @returns un objet qui contient les nouveaux coordonnees en absice et ordonée pour le fantome
  */
 function moveGhost(ghostPos, pacmanPos) {
 
@@ -227,6 +223,27 @@ function moveGhost(ghostPos, pacmanPos) {
 }
 
  
+
+/**
+ * Mettre à jour la position du fantôme toutes les 500 millisecondes
+ */ 
+setInterval(() => {
+
+  let newPos = moveGhost({ top: ghost.top, left: ghost.left }, { top: pacman.top, left: pacman.left });
+
+  // Vérifier que le fantôme ne sort pas de la carte et ne se déplace pas à travers les murs
+  if (newPos.top < 0 || newPos.top >= map.length || newPos.left < 0 || newPos.left >= map[0].length || map[newPos.top][newPos.left] === '#') {
+    
+    return; //sort de la fonction si remplis une des condition du if
+
+  }
+
+ghost.top = newPos.top;
+ghost.left = newPos.left;
+
+screen.render();
+
+}, 500); //temps de refresh 
 
 
 
