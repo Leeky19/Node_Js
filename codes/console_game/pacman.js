@@ -175,6 +175,31 @@ screen.key(['up', 'down', 'left', 'right'], (ch, key) => {
 
 });
 
+
+let ghost = blessed.text({
+
+    top: 1,   //position en ordonne
+  
+    left: 1,  //position en absice 
+  
+    content: 'G', //caractere qui represente Pac-man
+  
+    style: {
+  
+      fg: 'red' //couleur du caractere
+  
+    }
+  
+  });
+
+  screen.append(ghost);
+
+
+
+
+
+
+
  
 //mettre à jour l'affcihage de la fenetre de terminal
 screen.render();
