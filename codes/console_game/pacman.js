@@ -65,30 +65,29 @@ function drawMap(map) {
 
 let map = [
 
-  ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+  ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
 
-  ['#', '.', '#', '#', '#', '#', '#', '#', '.', '#'],
+  ['#', '.', '.', '.', '#', '#', '#', '#', '.', '.', '.', '.', '.', '.', '.', '#', '#', '.', '.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#', '#', '.', '.', '.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
 
-  ['#', '.', '#', '#', '#', '#', '#', '#', '.', '#'],
+  ['#', '.', '.', '.', '#', '#', '#', '.', '.', '#', '.', '.', '.', '.', '.', '.', '.','.', '.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.','.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#', '.', '.','.', '#'],
 
-  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.','.', '#'],
 
-  ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
-
+  ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
 ];
 
  
@@ -126,7 +125,6 @@ let pacman = blessed.text({
 screen.append(pacman);
 
  
-
 /**
  * Gérer les déplacements de Pac-Man en utilisant les entrées clavier
  * on utilisera les fleche du clavier.
@@ -140,7 +138,6 @@ screen.append(pacman);
 screen.key(['up', 'down', 'left', 'right'], (ch, key) => {
 
   let newTop = pacman.top;
-
   let newLeft = pacman.left;
 
   if (key.name === 'up') newTop--;      //si on appuis sur la touche 'up', pacman "monte"
@@ -160,11 +157,10 @@ screen.key(['up', 'down', 'left', 'right'], (ch, key) => {
             //si le programme passe dans le if on sort de la fonction et donc on ne va pas se deplacer
 
   }
+  
 
   // Mettre à jour la position de Pac-Man, Pac-man prend la veleur de ces nouveaux coordonnées
-
   pacman.top = newTop;
-
   pacman.left = newLeft;
 
   screen.render();
@@ -279,27 +275,19 @@ function checkGameOver() {
   setInterval(checkGameOver, 500);
 
 
-/* fonction pour le score mais ne fonctionne pas 
-let score = 0;
+// fonction pour le score mais ne fonctionne pas 
+/*let score = 0;
 
 function updateScore(){
     score++;
     score.setContent(`Score : ${score}`);
     screen.render;
 }
-
-if (map[newTop][newLeft] === '.'){
-    updateScore();
-    map[newTop][newLeft] = ''
-}
-
 */
 
- 
 //Mise à jour de l'affichage de la fenetre de terminal
 screen.render();
 
- 
 
 /**
  *Démarre la boucle d'événements de la bibliothèque de terminal
